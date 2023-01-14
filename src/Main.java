@@ -17,13 +17,23 @@ public class Main {
         employees.createNewEmployee("Павлов Павел Павлович", 5, 21000);
         employees.createNewEmployee("Артемьев Артем Артемович", 5, 39000);
 
-        System.out.println("Все сотрудники");
         employees.printEmployees();
         System.out.println();
-        System.out.println("Сумма затрат на зарплаты в месяц составляет " + employees.calculateAllSalaries() + " рублей");
+        System.out.printf("Сумма затрат на зарплаты в месяц составляет %.2f рублей%n", employees.calculateAllSalaries());
         System.out.printf("Среднее значение зарплат %.2f рублей%n", employees.calculateMiddleSalary());
         System.out.println();
         employees.printFullNameAllEmployees();
+        System.out.println();
+        System.out.println("Сотрудник с максимальной зарплатой" + "\n" + employees.findEmployeeWithMaxSalary());
+        System.out.println("Сотрудник с минимальной зарплатой" + "\n" + employees.findEmployeeWithMinSalary());
+        System.out.println();
+        employees.increaseSalaryByPercent(5);
+        employees.printEmployees();
+        System.out.println();
+        employees.printEmployeeWithMaxSalaryInDepartment(3);
+        employees.printEmployeeWithMinSalaryInDepartment(5);
+        System.out.println(employees.calculateSalariesOfDepartment(4));
+        System.out.println(employees.calculateMiddleSalariesOfDepartment(4));
 
     }
 }
