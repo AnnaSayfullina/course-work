@@ -32,8 +32,16 @@ public class Main {
         System.out.println();
         employees.printEmployeeWithMaxSalaryInDepartment(3);
         employees.printEmployeeWithMinSalaryInDepartment(5);
-        System.out.println(employees.calculateSalariesOfDepartment(4));
-        System.out.println(employees.calculateMiddleSalariesOfDepartment(4));
+        employees.printSalariesOfDepartment(4);
+        employees.printMiddleSalariesOfDepartment(4);
+        employees.increaseSalaryByPercentInDepartment(5, 4);
+        System.out.println();
+        employees.printEmployeesDepartment(1);
+        System.out.println();
+        employees.printEmployeesSalaryIsLessThan(30000);
+        System.out.println();
+        employees.printEmployeesSalaryIsMoreThan(40000);
+
 
     }
 }

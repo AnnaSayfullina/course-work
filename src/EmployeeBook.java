@@ -89,7 +89,7 @@ public class EmployeeBook {
         System.out.printf("В отделе %d сотрудник %s с максимальной зарплатой %.2f рублей%n", name.getDepartment(), name.getName(), name.getSalary());
     }
     public Employee findEmployeeWithMinSalaryInDepartment(int department){
-        double minSalary = 200000;
+        double minSalary = Integer.MAX_VALUE;
         Employee minEmployeeDepartment = employees[0];
         for (int i = 0; i < employees.length; i++) {
             if (employees[i].getDepartment() == department) {
@@ -114,6 +114,9 @@ public class EmployeeBook {
         }
         return sum;
     }
+    public void printSalariesOfDepartment(int department){
+        System.out.printf("Сумма затрат на зарплату по отделу %d составила %.02f рублей%n", department, calculateSalariesOfDepartment(department));
+    }
     public double calculateMiddleSalariesOfDepartment(int department) {
         double sum = calculateSalariesOfDepartment(department);
         int numbers = 0;
@@ -124,6 +127,42 @@ public class EmployeeBook {
         }
         return sum/numbers;
     }
+    public void printMiddleSalariesOfDepartment(int department){
+        System.out.printf("Средняя зарплата по отделу %d составила %.02f рублей%n", department, calculateMiddleSalariesOfDepartment(department));
+    }
+    public void increaseSalaryByPercentInDepartment(double percent, int department){
+        percent = 1+ 0.01 * percent;
+        for (int i = 0; i < employees.length; i++){
+            if (employees[i].getDepartment() == department) {
+                employees[i].setSalary(employees[i].getSalary() * percent);
+            }
+        }
+    }
+    public void printEmployeesDepartment(int department){
+        System.out.println("Сотрудники отдела " + department);
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i].getDepartment() == department) {
+                System.out.println(employees[i].getName() +", зарплата "+ employees[i].getSalary()+" рублей, id " + employees[i].getId());
+            }
+        }
+    }
+    public void printEmployeesSalaryIsLessThan (int salary){
+        System.out.println("Сотрудники с зарплатой меньше " + salary + " рублей:");
+        for (int i = 0; i < employees.length; i++) {
+            if(employees[i].getSalary() < salary){
+                System.out.println(employees[i].getName() +", зарплата "+ employees[i].getSalary()+" рублей, id " + employees[i].getId());
+            }
+        }
+    }
+    public void printEmployeesSalaryIsMoreThan (int salary){
+        System.out.println("Сотрудники с зарплатой больше (или равной) " + salary + " рублей:");
+        for (int i = 0; i < employees.length; i++) {
+            if(employees[i].getSalary() >= salary){
+                System.out.println(employees[i].getName() +", зарплата "+ employees[i].getSalary()+" рублей, id " + employees[i].getId());
+            }
+        }
+    }
+
 
 
 
