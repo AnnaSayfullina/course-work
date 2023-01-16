@@ -1,4 +1,4 @@
-public class Employee {
+ class Employee implements Comparable<Employee> {
     private String name;
     private int department;
     private double salary;
@@ -33,5 +33,14 @@ public class Employee {
     public String toString(){
         return "Ф.И.О: " + this.name + ", Отдел " + this.department + ", Зарплата " + this.salary + ", id " + this.id;
     }
-
-}
+    @Override
+     public int compareTo(Employee o) {
+         Employee tmp = o;
+         if(this.department < tmp.department) {
+             return -1;
+         } else if (this.department > tmp.department) {
+             return 1;
+         }
+         return 0;
+     }
+ }

@@ -19,28 +19,69 @@ public class Main {
 
         employees.printEmployees();
         System.out.println();
+
         System.out.printf("Сумма затрат на зарплаты в месяц составляет %.2f рублей%n", employees.calculateAllSalaries());
         System.out.printf("Среднее значение зарплат %.2f рублей%n", employees.calculateMiddleSalary());
         System.out.println();
+
         employees.printFullNameAllEmployees();
         System.out.println();
+
         System.out.println("Сотрудник с максимальной зарплатой" + "\n" + employees.findEmployeeWithMaxSalary());
+        System.out.println();
+
         System.out.println("Сотрудник с минимальной зарплатой" + "\n" + employees.findEmployeeWithMinSalary());
         System.out.println();
+
+        System.out.println("Индексация зарплат сотрудников на 5%");
         employees.increaseSalaryByPercent(5);
         employees.printEmployees();
         System.out.println();
+
         employees.printEmployeeWithMaxSalaryInDepartment(3);
         employees.printEmployeeWithMinSalaryInDepartment(5);
         employees.printSalariesOfDepartment(4);
         employees.printMiddleSalariesOfDepartment(4);
+        System.out.println();
+
+        System.out.println("Индексация зарплат сотрудников отдела");
         employees.increaseSalaryByPercentInDepartment(5, 4);
+        employees.printEmployeesDepartment(4);
         System.out.println();
-        employees.printEmployeesDepartment(1);
-        System.out.println();
+
         employees.printEmployeesSalaryIsLessThan(30000);
         System.out.println();
+
         employees.printEmployeesSalaryIsMoreThan(40000);
+        System.out.println();
+
+        System.out.println("Удаление сотрудника");
+        employees.removeEmployee("Денисов Денис Денисович");
+        employees.removeEmployee("Денисов Денис Денисович");
+        System.out.println();
+
+        System.out.println("Создание нового сотрудника и добавление его в массив");
+        employees.createNewEmployee("Васильев Василий Васильевич", 1, 60000);
+        employees.printEmployees();
+        System.out.println();
+
+        System.out.println("Изменение зарплаты сотрудника");
+        employees.changeSalary("Иванов Иван Иванович", 35000);
+        System.out.println(employees.findEmployee("Иванов Иван Иванович"));
+        System.out.println();
+
+        System.out.println("Изменение отдела сотрудника");
+        employees.changeDepartment("Иванов Иван Иванович", 5);
+        System.out.println(employees.findEmployee("Иванов Иван Иванович"));
+        System.out.println();
+
+        System.out.println("Список сотрудников по отделам");
+        employees.printAllDepartments();
+
+
+
+
+
 
 
     }

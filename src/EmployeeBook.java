@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class EmployeeBook {
     private Employee[] employees;
     private int sizeArray;
@@ -10,11 +12,17 @@ public class EmployeeBook {
         return this.employees;
     }
     public void addEmployeeToArray(Employee name) {
+        int size = 0;
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] == null) {
                 employees[i] = name;
                 return;
             }
+            size++;
+        }
+        if (size == employees.length) {
+            sizeArray++;
+            employees[employees.length-1] = name;
         }
     }
     public void createNewEmployee(String fullName, int department, int salary){
@@ -162,8 +170,53 @@ public class EmployeeBook {
             }
         }
     }
-
-
-
-
+    public void removeEmployee(String fullName) {
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i].getName().equals(fullName)) {
+                employees[i] = null;
+                if (i != employees.length-1) {
+                    System.arraycopy(employees, i+1, employees, i, sizeArray - i -1 );
+                }
+                sizeArray--;
+                System.out.println("Сотрудник " + fullName + " удален");
+                return;
+            }
+        }
+        System.out.println("Сотрудник " + fullName + " не найден");
+    }
+    public Employee findEmployee(String fullName) {
+        Employee name = employees[0];
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i].getName().equals(fullName)) {
+                name = employees[i];
+            }
+        }
+        return name;
+    }
+    public void changeSalary(String fullName, int salary) {
+        findEmployee(fullName).setSalary(salary);
+    }
+    public void changeDepartment(String fullName, int department) {
+        findEmployee(fullName).setDepartment(department);
+    }
+    public void sortArrayByDepartment(){
+        Arrays.sort(employees);
+    }
+    public void printAllDepartments(){
+        sortArrayByDepartment();
+        for (int i = 0; i < employees.length; i++){
+            System.out.println("Отдел " + employees[i].getDepartment());
+            while (employees[i].getDepartment() == employees[i+1].getDepartment() ){
+                System.out.println(employees[i].getName());
+                i++;
+                if(i == employees.length -1) {
+                    System.out.println(employees[i].getName());
+                    return;
+                }
+                if(employees[i].getDepartment() < employees[i+1].getDepartment()){
+                    System.out.println(employees[i].getName());
+                }
+            }
+        }
+    }
 }
